@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
     "moduleResolution": "node",
     "outDir": "dist",
-    "allowJs": true
+    "allowJs": true,
+    "outFile": "build/yare.js"
   },
   "lib": ["es2015"],
   "files": ["global.d.ts", "global.ts"],

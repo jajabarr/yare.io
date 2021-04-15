@@ -6,12 +6,21 @@ declare const star_zxq: Energy;
 declare const star_a1c: Energy;
 declare const memory: { [key: string]: SpiritState } & {
   init: boolean;
-  mergeLimit: number;
-  defenders: number;
-  mergeCount: number;
-  chargerLastMerge: number;
+  initialHP: number;
+  workerLastMerge: number;
   defenderLastMerge: number;
-  mergingSpiritA: string;
-  mergingSpiritB: string;
-  mergingSizeTarget: number;
+  mergers: {
+    workerA: string;
+    workerB: string;
+    time: number;
+  }[];
+  satelites: {
+    [key: string]: Structure;
+  };
+  defenders: {
+    [key: string]: Structure;
+  };
+  spirits: {
+    [key: string]: SpiritState;
+  };
 };

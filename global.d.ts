@@ -16,7 +16,7 @@ interface Common {
   sight: Sight;
 }
 
-interface Structure extends Pick<Common, "id" | "position"> {
+interface Structure extends Pick<Common, 'id' | 'position'> {
   structure_type: string;
 }
 
@@ -26,7 +26,13 @@ interface Energy extends Structure {}
 
 type Interactable = Spirit | Base | Energy;
 
-type SpiritState = "Charge" | "Harvest" | "Attack" | "Defend" | "Merge";
+type SpiritState =
+  | 'Charge'
+  | 'Harvest'
+  | 'Attack'
+  | 'Defend'
+  | 'Merge'
+  | 'Satelite';
 
 interface Spirit extends Common {
   move: (position: Position) => void;
