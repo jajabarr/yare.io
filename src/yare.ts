@@ -53,7 +53,7 @@
     // Attack if possible
     const nearestEnemy = isBaseUnderAttack() || isStarUnderAttack();
 
-    if (spirit.energy > Math.floor(spirit.energy_capacity / 2)) {
+    if (HasSufficientEnergy(spirit)) {
       if (!!nearestEnemy) {
         Attack(spirit, nearestEnemy);
         continue;
@@ -68,6 +68,12 @@
 
     // New spirit
     if (!GetState(spirit)) {
+      if (spirit.energy === spirit.energy_capacity) {
+        if (i % 3 === 0) {
+          Defend(spirit);
+          continue;
+        }
+      }
       if (HasSufficientEnergy(spirit)) {
         Charge(spirit);
         continue;
@@ -107,6 +113,15 @@
     spiritA.move(spiritB.position);
     spiritB.move(spiritA.position);
     spiritA.merge(spiritB);
+  }
+
+  const defenders = Object.keys(memory.defenders);
+  if (defenders.length > 0) {
+    const lastDefender = defenders[defenders.length - 1];
+
+    for (const defender of defenders.slice(0, defenders.length - 1)) {
+      spirits[defender].merge(spirits[lastDefender]);
+    }
   }
 
   Debug();

@@ -47,7 +47,9 @@ function Satelite(spirit: Spirit, structure?: Structure) {
 
   const home = structure || base;
   memory.satelites[spirit.id] = home;
-  spirit.move(home.position);
+
+  const [x, y] = home.position;
+  spirit.move([x, y + 200]);
   spirit.energize(spirit);
 }
 
@@ -66,7 +68,9 @@ function Defend(spirit: Spirit, structure?: Structure) {
 
   const home = structure || base;
   memory.defenders[spirit.id] = home;
-  spirit.move(home.position);
+
+  const [x, y] = home.position;
+  spirit.move([x, y + 200]);
 }
 
 function Attack(spirit: Spirit, enemy: string) {
